@@ -16,6 +16,8 @@ FROM nginx:alpine
 
 COPY --from=builder /golang /usr/bin/golang
 
-EXPOSE 80
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+EXPOSE 8080
 
 CMD ["sh", "-c", "/usr/bin/golang & nginx -g 'daemon off;'"]
